@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改寫你的思考模式 | 水星星座的決策練習</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Air - Deep Green */
+            --air-primary: #4a5043;
+            --air-light: #f0f1ed;
+            --air-glow: rgba(74, 80, 67, 0.15);
+            
+            /* Water - Breeze Blue */
+            --water-primary: #5b9fae;
+            --water-light: #e8f4f7;
+            --water-glow: rgba(91, 159, 174, 0.15);
+            
+            /* Fire - Deep Wine */
+            --fire-primary: #8b4a47;
+            --fire-light: #f5ede9;
+            --fire-glow: rgba(139, 74, 71, 0.15);
+            
+            /* Earth - Golden Tan */
+            --earth-primary: #b89d7a;
+            --earth-light: #f7f4ee;
+            --earth-glow: rgba(184, 157, 122, 0.15);
+            
+            /* Neutrals - Green-tinted Gray System */
+            --text-primary: #1f231f;
+            --text-secondary: #343835;
+            --text-light: #6a6e6a;
+            --background: #fafaf9;
+            --surface: #ffffff;
+            
+            /* CTA Accent */
+            --cta-primary: #436e8e;
+            --cta-hover: #365977;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+            color: var(--text-primary);
+            background: var(--background);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Header */
+        .header {
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--text-light));
+        }
+
+        .subtitle {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 48px;
+            font-weight: 400;
+            line-height: 1.3;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Intro */
+        .intro {
+            background: #c3d7d6;
+            padding: 60px;
+            margin-bottom: 120px;
+            border-radius: 2px;
+            position: relative;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--text-light) 50%, transparent);
+        }
+
+        .intro p {
+            font-size: 17px;
+            color: #1f3331;
+            margin-bottom: 24px;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        .intro p:last-child {
+            color: #3a5350;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        /* Element Sections */
+        .element-section {
+            margin-bottom: 160px;
+            position: relative;
+        }
+
+        .element-section.air::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: radial-gradient(ellipse at center, var(--text-light) 0%, transparent 70%);
+        }
+
+        .element-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .element-icon {
+            font-size: 56px;
+            margin-bottom: 24px;
+            display: block;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .element-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+
+        .element-signs {
+            font-size: 14px;
+            letter-spacing: 3px;
+            font-weight: 300;
+            color: var(--text-light);
+        }
+
+        /* Air Element */
+        .element-section.air .element-title {
+            color: var(--air-primary);
+        }
+
+        .element-section.air .element-icon {
+            filter: drop-shadow(0 4px 20px var(--air-glow));
+        }
+
+        .element-section.air .section-label {
+            background: var(--air-light);
+            color: var(--air-primary);
+        }
+
+        .element-section.air .reframe {
+            background: linear-gradient(135deg, var(--air-light) 0%, transparent 100%);
+            border-left-color: var(--air-primary);
+        }
+
+        /* Water Element */
+        .element-section.water .element-title {
+            color: var(--water-primary);
+        }
+
+        .element-section.water .element-icon {
+            filter: drop-shadow(0 4px 20px var(--water-glow));
+        }
+
+        .element-section.water .section-label {
+            background: var(--water-light);
+            color: var(--water-primary);
+        }
+
+        .element-section.water .reframe {
+            background: linear-gradient(135deg, var(--water-light) 0%, transparent 100%);
+            border-left-color: var(--water-primary);
+        }
+
+        /* Fire Element */
+        .element-section.fire .element-title {
+            color: var(--fire-primary);
+        }
+
+        .element-section.fire .element-icon {
+            filter: drop-shadow(0 4px 20px var(--fire-glow));
+        }
+
+        .element-section.fire .section-label {
+            background: var(--fire-light);
+            color: var(--fire-primary);
+        }
+
+        .element-section.fire .reframe {
+            background: linear-gradient(135deg, var(--fire-light) 0%, transparent 100%);
+            border-left-color: var(--fire-primary);
+        }
+
+        /* Fire element uses warmer gray tones */
+        .element-section.fire .content-text p,
+        .element-section.fire .practice-box p {
+            color: #3d3230;
+        }
+
+        .element-section.fire .reframe {
+            color: #2d2220;
+        }
+
+        /* Earth Element */
+        .element-section.earth .element-title {
+            color: var(--earth-primary);
+        }
+
+        .element-section.earth .element-icon {
+            filter: drop-shadow(0 4px 20px var(--earth-glow));
+        }
+
+        .element-section.earth .section-label {
+            background: var(--earth-light);
+            color: var(--earth-primary);
+        }
+
+        .element-section.earth .reframe {
+            background: linear-gradient(135deg, var(--earth-light) 0%, transparent 100%);
+            border-left-color: var(--earth-primary);
+        }
+
+        /* Content Blocks */
+        .content-block {
+            margin-bottom: 56px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 12px 24px;
+            border-radius: 100px;
+            margin-bottom: 28px;
+            letter-spacing: 0.3px;
+        }
+
+        .content-text p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        .practice-box {
+            background: var(--surface);
+            padding: 40px;
+            margin-top: 28px;
+            border-left: 2px solid var(--text-light);
+            position: relative;
+        }
+
+        .practice-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--text-light);
+        }
+
+        .practice-box p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 2;
+            margin-bottom: 20px;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .practice-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .reframe {
+            padding: 60px 48px;
+            margin-top: 72px;
+            text-align: center;
+            font-family: 'Crimson Pro', serif;
+            font-size: 20px;
+            line-height: 1.8;
+            font-weight: 300;
+            color: var(--text-primary);
+            border-left: 3px solid;
+            position: relative;
+        }
+
+        /* Divider */
+        .divider {
+            text-align: center;
+            margin: 120px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: radial-gradient(ellipse at center, var(--text-light) 0%, transparent 70%);
+        }
+
+        .divider-symbol {
+            position: relative;
+            display: inline-block;
+            padding: 0 32px;
+            background: var(--background);
+            color: var(--text-light);
+            font-size: 12px;
+            letter-spacing: 12px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--surface);
+            padding: 80px 60px;
+            margin: 120px 0;
+            text-align: center;
+            position: relative;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--text-light) 50%, transparent);
+        }
+
+        .cta-icon {
+            font-size: 48px;
+            margin-bottom: 32px;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.05));
+        }
+
+        .cta-heading {
+            font-family: 'Crimson Pro', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+        }
+
+        .cta-content {
+            max-width: 640px;
+            margin: 0 auto 48px;
+            text-align: left;
+        }
+
+        .cta-content p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        .cta-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-box {
+            background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+            padding: 50px;
+            margin: 56px 0 0;
+            border-left: 3px solid var(--text-primary);
+            text-align: left;
+            position: relative;
+        }
+
+        .service-box::before {
+            content: '';
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 1px;
+            background: radial-gradient(ellipse at center, var(--text-light) 0%, transparent 70%);
+        }
+
+        .service-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+        }
+
+        .service-box p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .service-box p:last-of-type:not(:has(a)) {
+            margin-bottom: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--cta-primary);
+            color: var(--surface);
+            padding: 18px 48px;
+            text-decoration: none;
+            border-radius: 100px;
+            font-size: 16px;
+            margin-top: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            border: 2px solid var(--cta-primary);
+            box-shadow: 0 4px 16px rgba(67, 110, 142, 0.25);
+        }
+
+        .cta-button:hover {
+            background: var(--cta-hover);
+            border-color: var(--cta-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(67, 110, 142, 0.35);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 80px 0 60px;
+            color: var(--text-light);
+            font-size: 13px;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* Scroll Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .header {
+                padding: 80px 0 60px;
+            }
+
+            .intro {
+                padding: 40px 32px;
+            }
+
+            .element-section {
+                margin-bottom: 100px;
+            }
+
+            .element-icon {
+                font-size: 48px;
+            }
+
+            .element-title {
+                font-size: 28px;
+            }
+
+            .section-label {
+                font-size: 15px;
+                padding: 10px 20px;
+            }
+
+            .content-text p {
+                font-size: 17px;
+            }
+
+            .practice-box {
+                padding: 32px 24px;
+            }
+
+            .reframe {
+                padding: 48px 32px;
+                font-size: 18px;
+            }
+
+            .cta-section {
+                padding: 60px 32px;
+            }
+
+            .service-box {
+                padding: 40px 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="subtitle">MERCURY PRACTICE</div>
+            <h1>改寫你的思考模式</h1>
+            <p class="tagline">水星星座的決策練習｜移除讓你反覆卡住的隱藏陷阱</p>
+        </header>
+
+        <!-- Intro -->
+        <section class="intro fade-in">
+            <p>在你繼續往下看之前，請確保自己在一個不受打擾的空間。</p>
+            <p>這份練習只做一件事：幫你看見浪費時間的思考方式。</p>
+            <p>做完練習，你不會立刻變成另一個理想的自己，也不會馬上變得更有行動力。但這份練習，會讓你藏在潛意識裡的慣性思考模式被看見。</p>
+            <p>看見了，才會有改變的空間。</p>
+            <p>接下來的練習，請準備好紙跟筆，或新增一份空白文件</p>
+        </section>
+
+        <!-- Air Element -->
+        <section class="element-section air">
+            <div class="element-header">
+                <span class="element-icon">🌬</span>
+                <h2 class="element-title">風象星座</h2>
+                <p class="element-signs">雙子 · 天秤 · 水瓶</p>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">會讓你卡住的思考模式</div>
+                <div class="content-text">
+                    <p>你習慣在決定之前，先把所有選項都想一遍。</p>
+                    <p>每個選項都很有道理，每個選項都有可能性。</p>
+                    <p>久了，你開始以為自己需要更多資訊。</p>
+                    <p>但其實，你只是在用思考逃避選擇。</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">拆解問題</div>
+                <div class="content-text">
+                    <p>回想最近一次，你告訴自己「我再想想」的時刻。</p>
+                </div>
+                <div class="practice-box">
+                    <p>在你說出「再想想」之前，你真正害怕的是什麼？<br>
+                    害怕選錯？害怕後悔？還是害怕承諾？</p>
+                    <p>把那個害怕寫下來，不需要解釋它，只是看見它。</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">行動練習</div>
+                <div class="content-text">
+                    <p>這週，選一個你一直在猶豫的決定。</p>
+                </div>
+                <div class="practice-box">
+                    <p>給自己5分鐘，寫下：<br>
+                    如果今天就要選，我會選＿＿＿，因為＿＿＿。</p>
+                    <p>不需要答案是完美的，只需要讓自己練習「選」這個動作。</p>
+                </div>
+            </div>
+
+            <div class="reframe">
+                你不是需要更多資訊。<br>
+                你需要的，是允許自己不完美地選擇。
+            </div>
+        </section>
+
+        <div class="divider">
+            <span class="divider-symbol">✦ ✦ ✦</span>
+        </div>
+
+        <!-- Water Element -->
+        <section class="element-section water">
+            <div class="element-header">
+                <span class="element-icon">💧</span>
+                <h2 class="element-title">水象星座</h2>
+                <p class="element-signs">巨蟹 · 天蠍 · 雙魚</p>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">會讓你卡住的思考模式</div>
+                <div class="content-text">
+                    <p>你的直覺太強，強到你同時感受到所有選項的可能性。</p>
+                    <p>每個選項都有它的吸引力，每個方向都有它的召喚。</p>
+                    <p>於是你等待「感覺對了」的那一刻。</p>
+                    <p>久了，你開始覺得沒有一個選項是真的對的。</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">拆解問題</div>
+                <div class="content-text">
+                    <p>回想最近一次，你告訴自己「等感覺對了再說」的時刻。</p>
+                </div>
+                <div class="practice-box">
+                    <p>那個「對的感覺」，你具體期待什麼？<br>
+                    是沒有恐懼？是很確定？還是完全不會後悔？</p>
+                    <p>把那個期待寫下來。</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">行動練習</div>
+                <div class="content-text">
+                    <p>這週找一個安靜的時間，給自己15分鐘。在紙上寫：</p>
+                </div>
+                <div class="practice-box">
+                    <p>我真正想要的是⋯⋯<br>
+                    但我害怕的是⋯⋯</p>
+                    <p>寫到停不下來為止。不需要合理，只需要真實。</p>
+                </div>
+            </div>
+
+            <div class="reframe">
+                你不是在等一個完美的感覺。<br>
+                你需要的，是允許自己在不確定中前進。
+            </div>
+        </section>
+
+        <div class="divider">
+            <span class="divider-symbol">✦ ✦ ✦</span>
+        </div>
+
+        <!-- Fire Element -->
+        <section class="element-section fire">
+            <div class="element-header">
+                <span class="element-icon">🔥</span>
+                <h2 class="element-title">火象星座</h2>
+                <p class="element-signs">牡羊 · 獅子 · 射手</p>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">會讓你卡住的思考模式</div>
+                <div class="content-text">
+                    <p>你習慣快速行動，憑直覺決定。</p>
+                    <p>但你很難在同一條路上走太久。</p>
+                    <p>當熱情消退、新鮮感不在了，你就想換方向。</p>
+                    <p>久了，你發現自己一直在起點重新開始，卻沒有一條路真正走到終點。</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">拆解問題</div>
+                <div class="content-text">
+                    <p>回想最近一次，你覺得「這條路好像不是我要的」的時刻。</p>
+                </div>
+                <div class="practice-box">
+                    <p>你是真的確定這條路不對？<br>
+                    還是只是熱情消退了？</p>
+                    <p>如果當初選這條路的理由還在，那個讓你想放棄的，是什麼？</p>
+                    <p>把你的答案寫下來。</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">行動練習</div>
+                <div class="content-text">
+                    <p>這週選一件你已經在做、但開始想放棄的事。</p>
+                </div>
+                <div class="practice-box">
+                    <p>給自己一個挑戰：<br>
+                    這週不管多無聊，都不換方向。</p>
+                    <p>然後觀察：當你堅持過無聊期，會看見什麼？</p>
+                </div>
+            </div>
+
+            <div class="reframe">
+                你不是選錯了路。<br>
+                你需要的，是允許自己度過無聊期。
+            </div>
+        </section>
+
+        <div class="divider">
+            <span class="divider-symbol">✦ ✦ ✦</span>
+        </div>
+
+        <!-- Earth Element -->
+        <section class="element-section earth">
+            <div class="element-header">
+                <span class="element-icon">🌍</span>
+                <h2 class="element-title">土象星座</h2>
+                <p class="element-signs">金牛 · 處女 · 魔羯</p>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">會讓你卡住的思考模式</div>
+                <div class="content-text">
+                    <p>你習慣用分析、比較、和評估來做決定。</p>
+                    <p>每個選項的優缺點你都列得很清楚，但你就是找不到那個「完美」的選項。</p>
+                    <p>久了，你開始覺得沒有一個選擇是真的對的。</p>
+                    <p>但其實，你在等的不是答案，是安全感。</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">拆解問題</div>
+                <div class="content-text">
+                    <p>回想最近一次，你告訴自己「等資訊更完整再說」的時刻。</p>
+                </div>
+                <div class="practice-box">
+                    <p>那個「更完整」，具體是什麼？<br>
+                    你需要知道什麼，才會覺得可以選了？</p>
+                    <p>把那個條件寫下來。然後問自己：這個條件，真的存在嗎？</p>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="section-label">行動練習</div>
+                <div class="content-text">
+                    <p>這週找一個你信任的人，告訴他一件你最近在猶豫的選擇。</p>
+                </div>
+                <div class="practice-box">
+                    <p>不需要解釋所有細節，只需要說：</p>
+                    <p>我現在在﹍﹍和﹍﹍之間猶豫，如果是你，你會選哪個？</p>
+                    <p>聽完之後，注意你的第一個反應。</p>
+                </div>
+            </div>
+
+            <div class="reframe">
+                你不是需要更多資訊。<br>
+                你需要的，是允許自己在不完美中開始。
+            </div>
+        </section>
+
+        <div class="divider">
+            <span class="divider-symbol">✦ ✦ ✦</span>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-icon">🌙</div>
+            <h2 class="cta-heading">做完練習之後</h2>
+
+            <div class="cta-content">
+                <p>如果你做完這份練習，看見了自己思考的盲點，但回到日常，面對那些真正重要的選擇，你還是站在原地。</p>
+                <p>不是你想的不夠清楚。是你一個人在這個問題裡，已經轉了太久了。</p>
+                <p>有些決定，不是再想一次就能解開的。是需要有人幫你找到那扇門，並告訴你：你現在卡在哪，從哪裡出發最快。</p>
+            </div>
+
+            <div class="service-box">
+                <h3 class="service-title">🌙 10分鐘免費服務諮詢</h3>
+                <p>你說出讓你卡住很久的生活煩惱。</p>
+                <p>巫來告訴你：從星盤、催眠還是塔羅，哪個工具能幫你節省最多時間，帶你快速走到出口。</p>
+                <p>不算牌、不看盤。就是針對你現在的問題，給你一個最直接的方向。</p>
+                <p>很多人在這10分鐘之後，才第一次知道自己真正需要的是什麼。</p>
+                <p style="text-align: center; margin-top: 32px;">
+                    <a href="https://lin.ee/vxD8F6n5" class="cta-button">LINE@ 留言「10分鐘諮詢」</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            天台的占卜巫 · @witchtarot101
+        </footer>
+    </div>
+</body>
+</html>
